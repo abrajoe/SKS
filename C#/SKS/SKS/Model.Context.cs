@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SKS
+namespace SKS.Scada.DAL
 {
     using System;
     using System.Data.Entity;
@@ -25,11 +25,11 @@ namespace SKS
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Anlage> Anlages { get; set; }
-        public DbSet<Kunde> Kundes { get; set; }
-        public DbSet<Messwert> Messwerts { get; set; }
-        public DbSet<MesswertTyp> MesswertTyps { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Measurement> Measurements { get; set; }
+        public DbSet<MeasurementTyp> MeasurementTyps { get; set; }
         public DbSet<Person> People { get; set; }
-        public DbSet<Techniker> Technikers { get; set; }
+        public DbSet<Site> Sites { get; set; }
+        public DbSet<Technican> Technicans { get; set; }
     }
 }

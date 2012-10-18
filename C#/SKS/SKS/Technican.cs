@@ -12,22 +12,16 @@ namespace SKS.Scada.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Person
+    public partial class Technican
     {
-        public Person()
+        public Technican()
         {
             this.Customers = new HashSet<Customer>();
-            this.Technicans = new HashSet<Technican>();
         }
     
-        public long PersonID { get; set; }
-        public string Firstname { get; set; }
-        public string Lastname { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
+        public long TechnicanID { get; set; }
     
         public virtual ICollection<Customer> Customers { get; set; }
-        public virtual ICollection<Technican> Technicans { get; set; }
+        public virtual Person Person { get; set; }
     }
 }

@@ -1,166 +1,166 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="SKSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+    <Schema Namespace="SKSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="SKSModelStoreContainer">
-          <EntitySet Name="Anlage" EntityType="SKSModel.Store.Anlage" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Kunde" EntityType="SKSModel.Store.Kunde" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Messwert" EntityType="SKSModel.Store.Messwert" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="MesswertTyp" EntityType="SKSModel.Store.MesswertTyp" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Customer" EntityType="SKSModel.Store.Customer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Measurement" EntityType="SKSModel.Store.Measurement" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MeasurementTyp" EntityType="SKSModel.Store.MeasurementTyp" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Person" EntityType="SKSModel.Store.Person" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Techniker" EntityType="SKSModel.Store.Techniker" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Site" EntityType="SKSModel.Store.Site" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Technican" EntityType="SKSModel.Store.Technican" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_Anlage_Kunde" Association="SKSModel.Store.FK_Anlage_Kunde">
-            <End Role="Kunde" EntitySet="Kunde" />
-            <End Role="Anlage" EntitySet="Anlage" />
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Site" EntitySet="Site" />
           </AssociationSet>
           <AssociationSet Name="FK_Kunde_Person" Association="SKSModel.Store.FK_Kunde_Person">
             <End Role="Person" EntitySet="Person" />
-            <End Role="Kunde" EntitySet="Kunde" />
+            <End Role="Customer" EntitySet="Customer" />
           </AssociationSet>
           <AssociationSet Name="FK_Kunde_Techniker" Association="SKSModel.Store.FK_Kunde_Techniker">
-            <End Role="Techniker" EntitySet="Techniker" />
-            <End Role="Kunde" EntitySet="Kunde" />
+            <End Role="Technican" EntitySet="Technican" />
+            <End Role="Customer" EntitySet="Customer" />
           </AssociationSet>
           <AssociationSet Name="FK_Messwert_Anlage" Association="SKSModel.Store.FK_Messwert_Anlage">
-            <End Role="Anlage" EntitySet="Anlage" />
-            <End Role="Messwert" EntitySet="Messwert" />
+            <End Role="Site" EntitySet="Site" />
+            <End Role="Measurement" EntitySet="Measurement" />
           </AssociationSet>
           <AssociationSet Name="FK_Messwert_MesswertTyp" Association="SKSModel.Store.FK_Messwert_MesswertTyp">
-            <End Role="MesswertTyp" EntitySet="MesswertTyp" />
-            <End Role="Messwert" EntitySet="Messwert" />
+            <End Role="MeasurementTyp" EntitySet="MeasurementTyp" />
+            <End Role="Measurement" EntitySet="Measurement" />
           </AssociationSet>
           <AssociationSet Name="FK_Techniker_Person" Association="SKSModel.Store.FK_Techniker_Person">
             <End Role="Person" EntitySet="Person" />
-            <End Role="Techniker" EntitySet="Techniker" />
+            <End Role="Technican" EntitySet="Technican" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Anlage">
+        <EntityType Name="Customer">
           <Key>
-            <PropertyRef Name="AnlageID" />
+            <PropertyRef Name="CustomerID" />
           </Key>
-          <Property Name="AnlageSeriennummer" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Longitude" Type="float" Nullable="false" />
-          <Property Name="Latitude" Type="float" Nullable="false" />
-          <Property Name="Beschreibung" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="KundeID" Type="bigint" Nullable="false" />
-          <Property Name="AnlageID" Type="bigint" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Kunde">
-          <Key>
-            <PropertyRef Name="KundeID" />
-          </Key>
-          <Property Name="KundeID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="TechnikerID" Type="bigint" Nullable="false" />
+          <Property Name="CustomerID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TechnicanID" Type="bigint" Nullable="false" />
           <Property Name="PersonID" Type="bigint" Nullable="false" />
         </EntityType>
-        <EntityType Name="Messwert">
+        <EntityType Name="Measurement">
           <Key>
-            <PropertyRef Name="MesswertID" />
+            <PropertyRef Name="MeasurementID" />
           </Key>
-          <Property Name="MesswertID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Wert" Type="float" Nullable="false" />
-          <Property Name="Zeitpunkt" Type="datetime" Nullable="false" />
-          <Property Name="AnlageID" Type="bigint" Nullable="false" />
-          <Property Name="MesswertTypID" Type="int" Nullable="false" />
+          <Property Name="MeasurementID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="float" Nullable="false" />
+          <Property Name="Time" Type="datetime" Nullable="false" />
+          <Property Name="SiteID" Type="bigint" Nullable="false" />
+          <Property Name="MeasurementTypID" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="MesswertTyp">
+        <EntityType Name="MeasurementTyp">
           <Key>
-            <PropertyRef Name="MesswertTypID" />
+            <PropertyRef Name="MeasurementTypID" />
           </Key>
-          <Property Name="MesswertTypID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MeasurementTypID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Minimum" Type="bigint" Nullable="false" />
           <Property Name="Maximum" Type="bigint" Nullable="false" />
-          <Property Name="Einheit" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Unit" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
             <PropertyRef Name="PersonID" />
           </Key>
           <Property Name="PersonID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Vorname" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Nachname" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Firstname" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Lastname" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="15" />
-          <Property Name="Passwort" Type="nvarchar" Nullable="false" MaxLength="15" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="15" />
           <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <EntityType Name="Techniker">
+        <EntityType Name="Site">
           <Key>
-            <PropertyRef Name="TechnikerID" />
+            <PropertyRef Name="SiteID" />
           </Key>
-          <Property Name="TechnikerID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Serialnumber" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Longitude" Type="float" Nullable="false" />
+          <Property Name="Latitude" Type="float" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CustomerID" Type="bigint" Nullable="false" />
+          <Property Name="SiteID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Technican">
+          <Key>
+            <PropertyRef Name="TechnicanID" />
+          </Key>
+          <Property Name="TechnicanID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="PersonID" Type="bigint" Nullable="false" />
         </EntityType>
         <Association Name="FK_Anlage_Kunde">
-          <End Role="Kunde" Type="SKSModel.Store.Kunde" Multiplicity="1" />
-          <End Role="Anlage" Type="SKSModel.Store.Anlage" Multiplicity="*" />
+          <End Role="Customer" Type="SKSModel.Store.Customer" Multiplicity="1" />
+          <End Role="Site" Type="SKSModel.Store.Site" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Kunde">
-              <PropertyRef Name="KundeID" />
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
             </Principal>
-            <Dependent Role="Anlage">
-              <PropertyRef Name="KundeID" />
+            <Dependent Role="Site">
+              <PropertyRef Name="CustomerID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Kunde_Person">
           <End Role="Person" Type="SKSModel.Store.Person" Multiplicity="1" />
-          <End Role="Kunde" Type="SKSModel.Store.Kunde" Multiplicity="*" />
+          <End Role="Customer" Type="SKSModel.Store.Customer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Person">
               <PropertyRef Name="PersonID" />
             </Principal>
-            <Dependent Role="Kunde">
+            <Dependent Role="Customer">
               <PropertyRef Name="PersonID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Kunde_Techniker">
-          <End Role="Techniker" Type="SKSModel.Store.Techniker" Multiplicity="1" />
-          <End Role="Kunde" Type="SKSModel.Store.Kunde" Multiplicity="*" />
+          <End Role="Technican" Type="SKSModel.Store.Technican" Multiplicity="1" />
+          <End Role="Customer" Type="SKSModel.Store.Customer" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Techniker">
-              <PropertyRef Name="TechnikerID" />
+            <Principal Role="Technican">
+              <PropertyRef Name="TechnicanID" />
             </Principal>
-            <Dependent Role="Kunde">
-              <PropertyRef Name="TechnikerID" />
+            <Dependent Role="Customer">
+              <PropertyRef Name="TechnicanID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Messwert_Anlage">
-          <End Role="Anlage" Type="SKSModel.Store.Anlage" Multiplicity="1" />
-          <End Role="Messwert" Type="SKSModel.Store.Messwert" Multiplicity="*" />
+          <End Role="Site" Type="SKSModel.Store.Site" Multiplicity="1" />
+          <End Role="Measurement" Type="SKSModel.Store.Measurement" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Anlage">
-              <PropertyRef Name="AnlageID" />
+            <Principal Role="Site">
+              <PropertyRef Name="SiteID" />
             </Principal>
-            <Dependent Role="Messwert">
-              <PropertyRef Name="AnlageID" />
+            <Dependent Role="Measurement">
+              <PropertyRef Name="SiteID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Messwert_MesswertTyp">
-          <End Role="MesswertTyp" Type="SKSModel.Store.MesswertTyp" Multiplicity="1" />
-          <End Role="Messwert" Type="SKSModel.Store.Messwert" Multiplicity="*" />
+          <End Role="MeasurementTyp" Type="SKSModel.Store.MeasurementTyp" Multiplicity="1" />
+          <End Role="Measurement" Type="SKSModel.Store.Measurement" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MesswertTyp">
-              <PropertyRef Name="MesswertTypID" />
+            <Principal Role="MeasurementTyp">
+              <PropertyRef Name="MeasurementTypID" />
             </Principal>
-            <Dependent Role="Messwert">
-              <PropertyRef Name="MesswertTypID" />
+            <Dependent Role="Measurement">
+              <PropertyRef Name="MeasurementTypID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Techniker_Person">
           <End Role="Person" Type="SKSModel.Store.Person" Multiplicity="1" />
-          <End Role="Techniker" Type="SKSModel.Store.Techniker" Multiplicity="*" />
+          <End Role="Technican" Type="SKSModel.Store.Technican" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Person">
               <PropertyRef Name="PersonID" />
             </Principal>
-            <Dependent Role="Techniker">
+            <Dependent Role="Technican">
               <PropertyRef Name="PersonID" />
             </Dependent>
           </ReferentialConstraint>
@@ -168,165 +168,154 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="SKSModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+      <Schema Namespace="SKSModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="SKSEntities">
-          <EntitySet Name="Anlages" EntityType="SKSModel.Anlage" />
-          <EntitySet Name="Kundes" EntityType="SKSModel.Kunde" />
-          <EntitySet Name="Messwerts" EntityType="SKSModel.Messwert" />
-          <EntitySet Name="MesswertTyps" EntityType="SKSModel.MesswertTyp" />
+          <EntitySet Name="Customers" EntityType="SKSModel.Customer" />
+          <EntitySet Name="Measurements" EntityType="SKSModel.Measurement" />
+          <EntitySet Name="MeasurementTyps" EntityType="SKSModel.MeasurementTyp" />
           <EntitySet Name="People" EntityType="SKSModel.Person" />
-          <EntitySet Name="Technikers" EntityType="SKSModel.Techniker" />
+          <EntitySet Name="Sites" EntityType="SKSModel.Site" />
+          <EntitySet Name="Technicans" EntityType="SKSModel.Technican" />
           <AssociationSet Name="FK_Anlage_Kunde" Association="SKSModel.FK_Anlage_Kunde">
-            <End Role="Kunde" EntitySet="Kundes" />
-            <End Role="Anlage" EntitySet="Anlages" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Messwert_Anlage" Association="SKSModel.FK_Messwert_Anlage">
-            <End Role="Anlage" EntitySet="Anlages" />
-            <End Role="Messwert" EntitySet="Messwerts" />
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Site" EntitySet="Sites" />
           </AssociationSet>
           <AssociationSet Name="FK_Kunde_Person" Association="SKSModel.FK_Kunde_Person">
             <End Role="Person" EntitySet="People" />
-            <End Role="Kunde" EntitySet="Kundes" />
+            <End Role="Customer" EntitySet="Customers" />
           </AssociationSet>
           <AssociationSet Name="FK_Kunde_Techniker" Association="SKSModel.FK_Kunde_Techniker">
-            <End Role="Techniker" EntitySet="Technikers" />
-            <End Role="Kunde" EntitySet="Kundes" />
+            <End Role="Technican" EntitySet="Technicans" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messwert_Anlage" Association="SKSModel.FK_Messwert_Anlage">
+            <End Role="Site" EntitySet="Sites" />
+            <End Role="Measurement" EntitySet="Measurements" />
           </AssociationSet>
           <AssociationSet Name="FK_Messwert_MesswertTyp" Association="SKSModel.FK_Messwert_MesswertTyp">
-            <End Role="MesswertTyp" EntitySet="MesswertTyps" />
-            <End Role="Messwert" EntitySet="Messwerts" />
+            <End Role="MeasurementTyp" EntitySet="MeasurementTyps" />
+            <End Role="Measurement" EntitySet="Measurements" />
           </AssociationSet>
           <AssociationSet Name="FK_Techniker_Person" Association="SKSModel.FK_Techniker_Person">
             <End Role="Person" EntitySet="People" />
-            <End Role="Techniker" EntitySet="Technikers" />
+            <End Role="Technican" EntitySet="Technicans" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Anlage">
+        <EntityType Name="Customer">
           <Key>
-            <PropertyRef Name="AnlageID" />
+            <PropertyRef Name="CustomerID" />
           </Key>
-          <Property Type="String" Name="AnlageSeriennummer" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Double" Name="Longitude" Nullable="false" />
-          <Property Type="Double" Name="Latitude" Nullable="false" />
-          <Property Type="String" Name="Beschreibung" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Int64" Name="AnlageID" Nullable="false" />
-          <NavigationProperty Name="Kunde" Relationship="SKSModel.FK_Anlage_Kunde" FromRole="Anlage" ToRole="Kunde" />
-          <NavigationProperty Name="Messwerts" Relationship="SKSModel.FK_Messwert_Anlage" FromRole="Anlage" ToRole="Messwert" />
+          <Property Type="Int64" Name="CustomerID" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <NavigationProperty Name="Sites" Relationship="SKSModel.FK_Anlage_Kunde" FromRole="Customer" ToRole="Site" />
+          <NavigationProperty Name="Person" Relationship="SKSModel.FK_Kunde_Person" FromRole="Customer" ToRole="Person" />
+          <NavigationProperty Name="Technican" Relationship="SKSModel.FK_Kunde_Techniker" FromRole="Customer" ToRole="Technican" />
         </EntityType>
-        <EntityType Name="Kunde">
+        <EntityType Name="Measurement">
           <Key>
-            <PropertyRef Name="KundeID" />
+            <PropertyRef Name="MeasurementID" />
           </Key>
-          <Property Type="Int64" Name="KundeID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Anlages" Relationship="SKSModel.FK_Anlage_Kunde" FromRole="Kunde" ToRole="Anlage" />
-          <NavigationProperty Name="Person" Relationship="SKSModel.FK_Kunde_Person" FromRole="Kunde" ToRole="Person" />
-          <NavigationProperty Name="Techniker" Relationship="SKSModel.FK_Kunde_Techniker" FromRole="Kunde" ToRole="Techniker" />
+          <Property Type="Int64" Name="MeasurementID" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Double" Name="Value" Nullable="false" />
+          <Property Type="DateTime" Name="Time" Nullable="false" />
+          <NavigationProperty Name="Site" Relationship="SKSModel.FK_Messwert_Anlage" FromRole="Measurement" ToRole="Site" />
+          <NavigationProperty Name="MeasurementTyp" Relationship="SKSModel.FK_Messwert_MesswertTyp" FromRole="Measurement" ToRole="MeasurementTyp" />
         </EntityType>
-        <EntityType Name="Messwert">
+        <EntityType Name="MeasurementTyp">
           <Key>
-            <PropertyRef Name="MesswertID" />
+            <PropertyRef Name="MeasurementTypID" />
           </Key>
-          <Property Type="Int64" Name="MesswertID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Double" Name="Wert" Nullable="false" />
-          <Property Type="DateTime" Name="Zeitpunkt" Nullable="false" />
-          <NavigationProperty Name="Anlage" Relationship="SKSModel.FK_Messwert_Anlage" FromRole="Messwert" ToRole="Anlage" />
-          <NavigationProperty Name="MesswertTyp" Relationship="SKSModel.FK_Messwert_MesswertTyp" FromRole="Messwert" ToRole="MesswertTyp" />
-        </EntityType>
-        <EntityType Name="MesswertTyp">
-          <Key>
-            <PropertyRef Name="MesswertTypID" />
-          </Key>
-          <Property Type="Int32" Name="MesswertTypID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="MeasurementTypID" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int64" Name="Minimum" Nullable="false" />
           <Property Type="Int64" Name="Maximum" Nullable="false" />
-          <Property Type="String" Name="Einheit" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Messwerts" Relationship="SKSModel.FK_Messwert_MesswertTyp" FromRole="MesswertTyp" ToRole="Messwert" />
+          <Property Type="String" Name="Unit" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Measurements" Relationship="SKSModel.FK_Messwert_MesswertTyp" FromRole="MeasurementTyp" ToRole="Measurement" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
             <PropertyRef Name="PersonID" />
           </Key>
-          <Property Type="Int64" Name="PersonID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Vorname" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Nachname" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="PersonID" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="Firstname" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Lastname" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Username" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Passwort" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Email" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Kundes" Relationship="SKSModel.FK_Kunde_Person" FromRole="Person" ToRole="Kunde" />
-          <NavigationProperty Name="Technikers" Relationship="SKSModel.FK_Techniker_Person" FromRole="Person" ToRole="Techniker" />
+          <NavigationProperty Name="Customers" Relationship="SKSModel.FK_Kunde_Person" FromRole="Person" ToRole="Customer" />
+          <NavigationProperty Name="Technicans" Relationship="SKSModel.FK_Techniker_Person" FromRole="Person" ToRole="Technican" />
         </EntityType>
-        <EntityType Name="Techniker">
+        <EntityType Name="Site">
           <Key>
-            <PropertyRef Name="TechnikerID" />
+            <PropertyRef Name="SiteID" />
           </Key>
-          <Property Type="Int64" Name="TechnikerID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Kundes" Relationship="SKSModel.FK_Kunde_Techniker" FromRole="Techniker" ToRole="Kunde" />
-          <NavigationProperty Name="Person" Relationship="SKSModel.FK_Techniker_Person" FromRole="Techniker" ToRole="Person" />
+          <Property Type="String" Name="Serialnumber" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="Longitude" Nullable="false" />
+          <Property Type="Double" Name="Latitude" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="SiteID" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="SKSModel.FK_Anlage_Kunde" FromRole="Site" ToRole="Customer" />
+          <NavigationProperty Name="Measurements" Relationship="SKSModel.FK_Messwert_Anlage" FromRole="Site" ToRole="Measurement" />
+        </EntityType>
+        <EntityType Name="Technican">
+          <Key>
+            <PropertyRef Name="TechnicanID" />
+          </Key>
+          <Property Type="Int64" Name="TechnicanID" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <NavigationProperty Name="Customers" Relationship="SKSModel.FK_Kunde_Techniker" FromRole="Technican" ToRole="Customer" />
+          <NavigationProperty Name="Person" Relationship="SKSModel.FK_Techniker_Person" FromRole="Technican" ToRole="Person" />
         </EntityType>
         <Association Name="FK_Anlage_Kunde">
-          <End Type="SKSModel.Kunde" Role="Kunde" Multiplicity="1" />
-          <End Type="SKSModel.Anlage" Role="Anlage" Multiplicity="*" />
-        </Association>
-        <Association Name="FK_Messwert_Anlage">
-          <End Type="SKSModel.Anlage" Role="Anlage" Multiplicity="1" />
-          <End Type="SKSModel.Messwert" Role="Messwert" Multiplicity="*" />
+          <End Type="SKSModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="SKSModel.Site" Role="Site" Multiplicity="*" />
         </Association>
         <Association Name="FK_Kunde_Person">
           <End Type="SKSModel.Person" Role="Person" Multiplicity="1" />
-          <End Type="SKSModel.Kunde" Role="Kunde" Multiplicity="*" />
+          <End Type="SKSModel.Customer" Role="Customer" Multiplicity="*" />
         </Association>
         <Association Name="FK_Kunde_Techniker">
-          <End Type="SKSModel.Techniker" Role="Techniker" Multiplicity="1" />
-          <End Type="SKSModel.Kunde" Role="Kunde" Multiplicity="*" />
+          <End Type="SKSModel.Technican" Role="Technican" Multiplicity="1" />
+          <End Type="SKSModel.Customer" Role="Customer" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Messwert_Anlage">
+          <End Type="SKSModel.Site" Role="Site" Multiplicity="1" />
+          <End Type="SKSModel.Measurement" Role="Measurement" Multiplicity="*" />
         </Association>
         <Association Name="FK_Messwert_MesswertTyp">
-          <End Type="SKSModel.MesswertTyp" Role="MesswertTyp" Multiplicity="1" />
-          <End Type="SKSModel.Messwert" Role="Messwert" Multiplicity="*" />
+          <End Type="SKSModel.MeasurementTyp" Role="MeasurementTyp" Multiplicity="1" />
+          <End Type="SKSModel.Measurement" Role="Measurement" Multiplicity="*" />
         </Association>
         <Association Name="FK_Techniker_Person">
           <End Type="SKSModel.Person" Role="Person" Multiplicity="1" />
-          <End Type="SKSModel.Techniker" Role="Techniker" Multiplicity="*" />
+          <End Type="SKSModel.Technican" Role="Technican" Multiplicity="*" />
         </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="SKSModelStoreContainer" CdmEntityContainer="SKSEntities">
-          <EntitySetMapping Name="Anlages">
-            <EntityTypeMapping TypeName="SKSModel.Anlage">
-              <MappingFragment StoreEntitySet="Anlage">
-                <ScalarProperty Name="AnlageID" ColumnName="AnlageID" />
-                <ScalarProperty Name="Beschreibung" ColumnName="Beschreibung" />
-                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
-                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
-                <ScalarProperty Name="AnlageSeriennummer" ColumnName="AnlageSeriennummer" />
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="SKSModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Kundes">
-            <EntityTypeMapping TypeName="SKSModel.Kunde">
-              <MappingFragment StoreEntitySet="Kunde">
-                <ScalarProperty Name="KundeID" ColumnName="KundeID" />
+          <EntitySetMapping Name="Measurements">
+            <EntityTypeMapping TypeName="SKSModel.Measurement">
+              <MappingFragment StoreEntitySet="Measurement">
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="MeasurementID" ColumnName="MeasurementID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Messwerts">
-            <EntityTypeMapping TypeName="SKSModel.Messwert">
-              <MappingFragment StoreEntitySet="Messwert">
-                <ScalarProperty Name="Zeitpunkt" ColumnName="Zeitpunkt" />
-                <ScalarProperty Name="Wert" ColumnName="Wert" />
-                <ScalarProperty Name="MesswertID" ColumnName="MesswertID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MesswertTyps">
-            <EntityTypeMapping TypeName="SKSModel.MesswertTyp">
-              <MappingFragment StoreEntitySet="MesswertTyp">
-                <ScalarProperty Name="Einheit" ColumnName="Einheit" />
+          <EntitySetMapping Name="MeasurementTyps">
+            <EntityTypeMapping TypeName="SKSModel.MeasurementTyp">
+              <MappingFragment StoreEntitySet="MeasurementTyp">
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
                 <ScalarProperty Name="Maximum" ColumnName="Maximum" />
                 <ScalarProperty Name="Minimum" ColumnName="Minimum" />
-                <ScalarProperty Name="MesswertTypID" ColumnName="MesswertTypID" />
+                <ScalarProperty Name="MeasurementTypID" ColumnName="MeasurementTypID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -334,64 +323,75 @@
             <EntityTypeMapping TypeName="SKSModel.Person">
               <MappingFragment StoreEntitySet="Person">
                 <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Passwort" ColumnName="Passwort" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Nachname" ColumnName="Nachname" />
-                <ScalarProperty Name="Vorname" ColumnName="Vorname" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
                 <ScalarProperty Name="PersonID" ColumnName="PersonID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Technikers">
-            <EntityTypeMapping TypeName="SKSModel.Techniker">
-              <MappingFragment StoreEntitySet="Techniker">
-                <ScalarProperty Name="TechnikerID" ColumnName="TechnikerID" />
+          <EntitySetMapping Name="Sites">
+            <EntityTypeMapping TypeName="SKSModel.Site">
+              <MappingFragment StoreEntitySet="Site">
+                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Serialnumber" ColumnName="Serialnumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="FK_Anlage_Kunde" TypeName="SKSModel.FK_Anlage_Kunde" StoreEntitySet="Anlage">
-            <EndProperty Name="Anlage">
-              <ScalarProperty Name="AnlageID" ColumnName="AnlageID" />
+          <EntitySetMapping Name="Technicans">
+            <EntityTypeMapping TypeName="SKSModel.Technican">
+              <MappingFragment StoreEntitySet="Technican">
+                <ScalarProperty Name="TechnicanID" ColumnName="TechnicanID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_Anlage_Kunde" TypeName="SKSModel.FK_Anlage_Kunde" StoreEntitySet="Site">
+            <EndProperty Name="Site">
+              <ScalarProperty Name="SiteID" ColumnName="SiteID" />
             </EndProperty>
-            <EndProperty Name="Kunde">
-              <ScalarProperty Name="KundeID" ColumnName="KundeID" />
+            <EndProperty Name="Customer">
+              <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Messwert_Anlage" TypeName="SKSModel.FK_Messwert_Anlage" StoreEntitySet="Messwert">
-            <EndProperty Name="Messwert">
-              <ScalarProperty Name="MesswertID" ColumnName="MesswertID" />
-            </EndProperty>
-            <EndProperty Name="Anlage">
-              <ScalarProperty Name="AnlageID" ColumnName="AnlageID" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Kunde_Person" TypeName="SKSModel.FK_Kunde_Person" StoreEntitySet="Kunde">
-            <EndProperty Name="Kunde">
-              <ScalarProperty Name="KundeID" ColumnName="KundeID" />
+          <AssociationSetMapping Name="FK_Kunde_Person" TypeName="SKSModel.FK_Kunde_Person" StoreEntitySet="Customer">
+            <EndProperty Name="Customer">
+              <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
             </EndProperty>
             <EndProperty Name="Person">
               <ScalarProperty Name="PersonID" ColumnName="PersonID" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Kunde_Techniker" TypeName="SKSModel.FK_Kunde_Techniker" StoreEntitySet="Kunde">
-            <EndProperty Name="Kunde">
-              <ScalarProperty Name="KundeID" ColumnName="KundeID" />
+          <AssociationSetMapping Name="FK_Kunde_Techniker" TypeName="SKSModel.FK_Kunde_Techniker" StoreEntitySet="Customer">
+            <EndProperty Name="Customer">
+              <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
             </EndProperty>
-            <EndProperty Name="Techniker">
-              <ScalarProperty Name="TechnikerID" ColumnName="TechnikerID" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Messwert_MesswertTyp" TypeName="SKSModel.FK_Messwert_MesswertTyp" StoreEntitySet="Messwert">
-            <EndProperty Name="Messwert">
-              <ScalarProperty Name="MesswertID" ColumnName="MesswertID" />
-            </EndProperty>
-            <EndProperty Name="MesswertTyp">
-              <ScalarProperty Name="MesswertTypID" ColumnName="MesswertTypID" />
+            <EndProperty Name="Technican">
+              <ScalarProperty Name="TechnicanID" ColumnName="TechnicanID" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Techniker_Person" TypeName="SKSModel.FK_Techniker_Person" StoreEntitySet="Techniker">
-            <EndProperty Name="Techniker">
-              <ScalarProperty Name="TechnikerID" ColumnName="TechnikerID" />
+          <AssociationSetMapping Name="FK_Messwert_Anlage" TypeName="SKSModel.FK_Messwert_Anlage" StoreEntitySet="Measurement">
+            <EndProperty Name="Measurement">
+              <ScalarProperty Name="MeasurementID" ColumnName="MeasurementID" />
+            </EndProperty>
+            <EndProperty Name="Site">
+              <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Messwert_MesswertTyp" TypeName="SKSModel.FK_Messwert_MesswertTyp" StoreEntitySet="Measurement">
+            <EndProperty Name="Measurement">
+              <ScalarProperty Name="MeasurementID" ColumnName="MeasurementID" />
+            </EndProperty>
+            <EndProperty Name="MeasurementTyp">
+              <ScalarProperty Name="MeasurementTypID" ColumnName="MeasurementTypID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Techniker_Person" TypeName="SKSModel.FK_Techniker_Person" StoreEntitySet="Technican">
+            <EndProperty Name="Technican">
+              <ScalarProperty Name="TechnicanID" ColumnName="TechnicanID" />
             </EndProperty>
             <EndProperty Name="Person">
               <ScalarProperty Name="PersonID" ColumnName="PersonID" />
@@ -402,7 +402,7 @@
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <Connection>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
@@ -419,28 +419,28 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="Model">
-        <EntityTypeShape EntityType="SKSModel.Anlage" Width="1.5" PointX="7.5" PointY="3.5" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="SKSModel.Kunde" Width="1.5" PointX="5.25" PointY="3.875" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="SKSModel.Messwert" Width="1.5" PointX="9.75" PointY="3.75" Height="1.9802864583333353" />
-        <EntityTypeShape EntityType="SKSModel.MesswertTyp" Width="1.5" PointX="7.5" PointY="0.75" Height="1.9802864583333317" />
-        <EntityTypeShape EntityType="SKSModel.Person" Width="1.5" PointX="0.75" PointY="2.125" Height="2.5571907552083384" />
-        <EntityTypeShape EntityType="SKSModel.Techniker" Width="1.5" PointX="3" PointY="5.75" Height="1.595683593749996" />
+        <EntityTypeShape EntityType="SKSModel.Customer" Width="1.5" PointX="5.25" PointY="3.875" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="SKSModel.Measurement" Width="1.5" PointX="9.75" PointY="3.75" Height="1.9802864583333317" />
+        <EntityTypeShape EntityType="SKSModel.MeasurementTyp" Width="1.5" PointX="7.5" PointY="0.75" Height="1.9802864583333317" />
+        <EntityTypeShape EntityType="SKSModel.Person" Width="1.5" PointX="0.75" PointY="2.125" Height="2.5571907552083348" />
+        <EntityTypeShape EntityType="SKSModel.Site" Width="1.5" PointX="7.5" PointY="3.5" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="SKSModel.Technican" Width="1.5" PointX="3" PointY="5.75" Height="1.5956835937500031" />
         <AssociationConnector Association="SKSModel.FK_Anlage_Kunde" >
           <ConnectorPoint PointX="6.75" PointY="4.7689925130208337" />
           <ConnectorPoint PointX="7.5" PointY="4.7689925130208337" />
         </AssociationConnector>
-        <AssociationConnector Association="SKSModel.FK_Messwert_Anlage" >
-          <ConnectorPoint PointX="9" PointY="4.7401432291666676" />
-          <ConnectorPoint PointX="9.75" PointY="4.7401432291666676" />
-        </AssociationConnector>
         <AssociationConnector Association="SKSModel.FK_Kunde_Person" >
-          <ConnectorPoint PointX="2.25" PointY="4.2785953776041694" />
-          <ConnectorPoint PointX="5.25" PointY="4.2785953776041694" />
+          <ConnectorPoint PointX="2.25" PointY="4.2785953776041676" />
+          <ConnectorPoint PointX="5.25" PointY="4.2785953776041676" />
         </AssociationConnector>
         <AssociationConnector Association="SKSModel.FK_Kunde_Techniker" >
-          <ConnectorPoint PointX="4.5" PointY="6.547841796874998" />
-          <ConnectorPoint PointX="6" PointY="6.547841796874998" />
+          <ConnectorPoint PointX="4.5" PointY="6.5478417968750016" />
+          <ConnectorPoint PointX="6" PointY="6.5478417968750016" />
           <ConnectorPoint PointX="6" PointY="5.6629850260416674" />
+        </AssociationConnector>
+        <AssociationConnector Association="SKSModel.FK_Messwert_Anlage" >
+          <ConnectorPoint PointX="9" PointY="4.7401432291666659" />
+          <ConnectorPoint PointX="9.75" PointY="4.7401432291666659" />
         </AssociationConnector>
         <AssociationConnector Association="SKSModel.FK_Messwert_MesswertTyp" >
           <ConnectorPoint PointX="9" PointY="1.7401432291666659" />
@@ -448,9 +448,9 @@
           <ConnectorPoint PointX="10.5" PointY="3.75" />
         </AssociationConnector>
         <AssociationConnector Association="SKSModel.FK_Techniker_Person" >
-          <ConnectorPoint PointX="1.5" PointY="4.6821907552083388" />
-          <ConnectorPoint PointX="1.5" PointY="6.547841796874998" />
-          <ConnectorPoint PointX="3" PointY="6.547841796874998" />
+          <ConnectorPoint PointX="1.5" PointY="4.6821907552083353" />
+          <ConnectorPoint PointX="1.5" PointY="6.5478417968750016" />
+          <ConnectorPoint PointX="3" PointY="6.5478417968750016" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>
