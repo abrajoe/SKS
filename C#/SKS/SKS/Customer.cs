@@ -23,6 +23,6 @@ namespace SKS.Scada.DAL
     
         public virtual ICollection<Site> Sites { get; set; }
         public virtual Person Person { get; set; }
-        public virtual Technican Technican { get; set; }
+        public virtual Technician Technician { get; set; }
     }
 }

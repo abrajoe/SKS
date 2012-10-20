@@ -17,7 +17,7 @@ namespace SKS.Scada.DAL
         public Person()
         {
             this.Customers = new HashSet<Customer>();
-            this.Technicans = new HashSet<Technican>();
+            this.Technicians = new HashSet<Technician>();
         }
     
         public long PersonID { get; set; }
@@ -28,6 +28,6 @@ namespace SKS.Scada.DAL
         public string Email { get; set; }
     
         public virtual ICollection<Customer> Customers { get; set; }
-        public virtual ICollection<Technican> Technicans { get; set; }
+        public virtual ICollection<Technician> Technicians { get; set; }
     }
 }

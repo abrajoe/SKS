@@ -11,7 +11,7 @@
           <EntitySet Name="MeasurementTyp" EntityType="SKSModel.Store.MeasurementTyp" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Person" EntityType="SKSModel.Store.Person" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Site" EntityType="SKSModel.Store.Site" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Technican" EntityType="SKSModel.Store.Technican" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Technician" EntityType="SKSModel.Store.Technician" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_Anlage_Kunde" Association="SKSModel.Store.FK_Anlage_Kunde">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Site" EntitySet="Site" />
@@ -21,7 +21,7 @@
             <End Role="Customer" EntitySet="Customer" />
           </AssociationSet>
           <AssociationSet Name="FK_Kunde_Techniker" Association="SKSModel.Store.FK_Kunde_Techniker">
-            <End Role="Technican" EntitySet="Technican" />
+            <End Role="Technician" EntitySet="Technician" />
             <End Role="Customer" EntitySet="Customer" />
           </AssociationSet>
           <AssociationSet Name="FK_Messwert_Anlage" Association="SKSModel.Store.FK_Messwert_Anlage">
@@ -34,7 +34,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_Techniker_Person" Association="SKSModel.Store.FK_Techniker_Person">
             <End Role="Person" EntitySet="Person" />
-            <End Role="Technican" EntitySet="Technican" />
+            <End Role="Technician" EntitySet="Technician" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Customer">
@@ -42,7 +42,7 @@
             <PropertyRef Name="CustomerID" />
           </Key>
           <Property Name="CustomerID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="TechnicanID" Type="bigint" Nullable="false" />
+          <Property Name="TechnicianID" Type="bigint" Nullable="false" />
           <Property Name="PersonID" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="Measurement">
@@ -86,11 +86,11 @@
           <Property Name="CustomerID" Type="bigint" Nullable="false" />
           <Property Name="SiteID" Type="bigint" Nullable="false" />
         </EntityType>
-        <EntityType Name="Technican">
+        <EntityType Name="Technician">
           <Key>
-            <PropertyRef Name="TechnicanID" />
+            <PropertyRef Name="TechnicianID" />
           </Key>
-          <Property Name="TechnicanID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TechnicianID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="PersonID" Type="bigint" Nullable="false" />
         </EntityType>
         <Association Name="FK_Anlage_Kunde">
@@ -118,14 +118,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Kunde_Techniker">
-          <End Role="Technican" Type="SKSModel.Store.Technican" Multiplicity="1" />
+          <End Role="Technician" Type="SKSModel.Store.Technician" Multiplicity="1" />
           <End Role="Customer" Type="SKSModel.Store.Customer" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Technican">
-              <PropertyRef Name="TechnicanID" />
+            <Principal Role="Technician">
+              <PropertyRef Name="TechnicianID" />
             </Principal>
             <Dependent Role="Customer">
-              <PropertyRef Name="TechnicanID" />
+              <PropertyRef Name="TechnicianID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -155,12 +155,12 @@
         </Association>
         <Association Name="FK_Techniker_Person">
           <End Role="Person" Type="SKSModel.Store.Person" Multiplicity="1" />
-          <End Role="Technican" Type="SKSModel.Store.Technican" Multiplicity="*" />
+          <End Role="Technician" Type="SKSModel.Store.Technician" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Person">
               <PropertyRef Name="PersonID" />
             </Principal>
-            <Dependent Role="Technican">
+            <Dependent Role="Technician">
               <PropertyRef Name="PersonID" />
             </Dependent>
           </ReferentialConstraint>
@@ -175,7 +175,7 @@
           <EntitySet Name="MeasurementTyps" EntityType="SKSModel.MeasurementTyp" />
           <EntitySet Name="People" EntityType="SKSModel.Person" />
           <EntitySet Name="Sites" EntityType="SKSModel.Site" />
-          <EntitySet Name="Technicans" EntityType="SKSModel.Technican" />
+          <EntitySet Name="Technicians" EntityType="SKSModel.Technician" />
           <AssociationSet Name="FK_Anlage_Kunde" Association="SKSModel.FK_Anlage_Kunde">
             <End Role="Customer" EntitySet="Customers" />
             <End Role="Site" EntitySet="Sites" />
@@ -185,7 +185,7 @@
             <End Role="Customer" EntitySet="Customers" />
           </AssociationSet>
           <AssociationSet Name="FK_Kunde_Techniker" Association="SKSModel.FK_Kunde_Techniker">
-            <End Role="Technican" EntitySet="Technicans" />
+            <End Role="Technician" EntitySet="Technicians" />
             <End Role="Customer" EntitySet="Customers" />
           </AssociationSet>
           <AssociationSet Name="FK_Messwert_Anlage" Association="SKSModel.FK_Messwert_Anlage">
@@ -198,7 +198,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_Techniker_Person" Association="SKSModel.FK_Techniker_Person">
             <End Role="Person" EntitySet="People" />
-            <End Role="Technican" EntitySet="Technicans" />
+            <End Role="Technician" EntitySet="Technicians" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Customer">
@@ -208,7 +208,7 @@
           <Property Type="Int64" Name="CustomerID" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <NavigationProperty Name="Sites" Relationship="SKSModel.FK_Anlage_Kunde" FromRole="Customer" ToRole="Site" />
           <NavigationProperty Name="Person" Relationship="SKSModel.FK_Kunde_Person" FromRole="Customer" ToRole="Person" />
-          <NavigationProperty Name="Technican" Relationship="SKSModel.FK_Kunde_Techniker" FromRole="Customer" ToRole="Technican" />
+          <NavigationProperty Name="Technician" Relationship="SKSModel.FK_Kunde_Techniker" FromRole="Customer" ToRole="Technician" />
         </EntityType>
         <EntityType Name="Measurement">
           <Key>
@@ -241,7 +241,7 @@
           <Property Type="String" Name="Password" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Email" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Customers" Relationship="SKSModel.FK_Kunde_Person" FromRole="Person" ToRole="Customer" />
-          <NavigationProperty Name="Technicans" Relationship="SKSModel.FK_Techniker_Person" FromRole="Person" ToRole="Technican" />
+          <NavigationProperty Name="Technicians" Relationship="SKSModel.FK_Techniker_Person" FromRole="Person" ToRole="Technician" />
         </EntityType>
         <EntityType Name="Site">
           <Key>
@@ -255,13 +255,13 @@
           <NavigationProperty Name="Customer" Relationship="SKSModel.FK_Anlage_Kunde" FromRole="Site" ToRole="Customer" />
           <NavigationProperty Name="Measurements" Relationship="SKSModel.FK_Messwert_Anlage" FromRole="Site" ToRole="Measurement" />
         </EntityType>
-        <EntityType Name="Technican">
+        <EntityType Name="Technician">
           <Key>
-            <PropertyRef Name="TechnicanID" />
+            <PropertyRef Name="TechnicianID" />
           </Key>
-          <Property Type="Int64" Name="TechnicanID" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
-          <NavigationProperty Name="Customers" Relationship="SKSModel.FK_Kunde_Techniker" FromRole="Technican" ToRole="Customer" />
-          <NavigationProperty Name="Person" Relationship="SKSModel.FK_Techniker_Person" FromRole="Technican" ToRole="Person" />
+          <Property Type="Int64" Name="TechnicianID" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <NavigationProperty Name="Customers" Relationship="SKSModel.FK_Kunde_Techniker" FromRole="Technician" ToRole="Customer" />
+          <NavigationProperty Name="Person" Relationship="SKSModel.FK_Techniker_Person" FromRole="Technician" ToRole="Person" />
         </EntityType>
         <Association Name="FK_Anlage_Kunde">
           <End Type="SKSModel.Customer" Role="Customer" Multiplicity="1" />
@@ -272,7 +272,7 @@
           <End Type="SKSModel.Customer" Role="Customer" Multiplicity="*" />
         </Association>
         <Association Name="FK_Kunde_Techniker">
-          <End Type="SKSModel.Technican" Role="Technican" Multiplicity="1" />
+          <End Type="SKSModel.Technician" Role="Technician" Multiplicity="1" />
           <End Type="SKSModel.Customer" Role="Customer" Multiplicity="*" />
         </Association>
         <Association Name="FK_Messwert_Anlage">
@@ -285,7 +285,7 @@
         </Association>
         <Association Name="FK_Techniker_Person">
           <End Type="SKSModel.Person" Role="Person" Multiplicity="1" />
-          <End Type="SKSModel.Technican" Role="Technican" Multiplicity="*" />
+          <End Type="SKSModel.Technician" Role="Technician" Multiplicity="*" />
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -342,10 +342,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Technicans">
-            <EntityTypeMapping TypeName="SKSModel.Technican">
-              <MappingFragment StoreEntitySet="Technican">
-                <ScalarProperty Name="TechnicanID" ColumnName="TechnicanID" />
+          <EntitySetMapping Name="Technicians">
+            <EntityTypeMapping TypeName="SKSModel.Technician">
+              <MappingFragment StoreEntitySet="Technician">
+                <ScalarProperty Name="TechnicianID" ColumnName="TechnicianID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -369,8 +369,8 @@
             <EndProperty Name="Customer">
               <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
             </EndProperty>
-            <EndProperty Name="Technican">
-              <ScalarProperty Name="TechnicanID" ColumnName="TechnicanID" />
+            <EndProperty Name="Technician">
+              <ScalarProperty Name="TechnicianID" ColumnName="TechnicianID" />
             </EndProperty>
           </AssociationSetMapping>
           <AssociationSetMapping Name="FK_Messwert_Anlage" TypeName="SKSModel.FK_Messwert_Anlage" StoreEntitySet="Measurement">
@@ -389,9 +389,9 @@
               <ScalarProperty Name="MeasurementTypID" ColumnName="MeasurementTypID" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Techniker_Person" TypeName="SKSModel.FK_Techniker_Person" StoreEntitySet="Technican">
-            <EndProperty Name="Technican">
-              <ScalarProperty Name="TechnicanID" ColumnName="TechnicanID" />
+          <AssociationSetMapping Name="FK_Techniker_Person" TypeName="SKSModel.FK_Techniker_Person" StoreEntitySet="Technician">
+            <EndProperty Name="Technician">
+              <ScalarProperty Name="TechnicianID" ColumnName="TechnicianID" />
             </EndProperty>
             <EndProperty Name="Person">
               <ScalarProperty Name="PersonID" ColumnName="PersonID" />
@@ -420,37 +420,37 @@
     <Diagrams>
       <Diagram Name="Model">
         <EntityTypeShape EntityType="SKSModel.Customer" Width="1.5" PointX="5.25" PointY="3.875" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="SKSModel.Measurement" Width="1.5" PointX="9.75" PointY="3.75" Height="1.9802864583333317" />
-        <EntityTypeShape EntityType="SKSModel.MeasurementTyp" Width="1.5" PointX="7.5" PointY="0.75" Height="1.9802864583333317" />
-        <EntityTypeShape EntityType="SKSModel.Person" Width="1.5" PointX="0.75" PointY="2.125" Height="2.5571907552083348" />
+        <EntityTypeShape EntityType="SKSModel.Measurement" Width="1.5" PointX="9.75" PointY="3.75" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="SKSModel.MeasurementTyp" Width="1.5" PointX="7.5" PointY="0.75" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="SKSModel.Person" Width="1.5" PointX="0.75" PointY="2.125" Height="2.5571907552083384" />
         <EntityTypeShape EntityType="SKSModel.Site" Width="1.5" PointX="7.5" PointY="3.5" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="SKSModel.Technican" Width="1.5" PointX="3" PointY="5.75" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="SKSModel.Technician" Width="1.5" PointX="3" PointY="5.75" Height="1.595683593749996" />
         <AssociationConnector Association="SKSModel.FK_Anlage_Kunde" >
           <ConnectorPoint PointX="6.75" PointY="4.7689925130208337" />
           <ConnectorPoint PointX="7.5" PointY="4.7689925130208337" />
         </AssociationConnector>
         <AssociationConnector Association="SKSModel.FK_Kunde_Person" >
-          <ConnectorPoint PointX="2.25" PointY="4.2785953776041676" />
-          <ConnectorPoint PointX="5.25" PointY="4.2785953776041676" />
+          <ConnectorPoint PointX="2.25" PointY="4.2785953776041694" />
+          <ConnectorPoint PointX="5.25" PointY="4.2785953776041694" />
         </AssociationConnector>
         <AssociationConnector Association="SKSModel.FK_Kunde_Techniker" >
-          <ConnectorPoint PointX="4.5" PointY="6.5478417968750016" />
-          <ConnectorPoint PointX="6" PointY="6.5478417968750016" />
+          <ConnectorPoint PointX="4.5" PointY="6.547841796874998" />
+          <ConnectorPoint PointX="6" PointY="6.547841796874998" />
           <ConnectorPoint PointX="6" PointY="5.6629850260416674" />
         </AssociationConnector>
         <AssociationConnector Association="SKSModel.FK_Messwert_Anlage" >
-          <ConnectorPoint PointX="9" PointY="4.7401432291666659" />
-          <ConnectorPoint PointX="9.75" PointY="4.7401432291666659" />
+          <ConnectorPoint PointX="9" PointY="4.7401432291666694" />
+          <ConnectorPoint PointX="9.75" PointY="4.7401432291666694" />
         </AssociationConnector>
         <AssociationConnector Association="SKSModel.FK_Messwert_MesswertTyp" >
-          <ConnectorPoint PointX="9" PointY="1.7401432291666659" />
-          <ConnectorPoint PointX="10.5" PointY="1.7401432291666659" />
+          <ConnectorPoint PointX="9" PointY="1.7401432291666694" />
+          <ConnectorPoint PointX="10.5" PointY="1.7401432291666694" />
           <ConnectorPoint PointX="10.5" PointY="3.75" />
         </AssociationConnector>
         <AssociationConnector Association="SKSModel.FK_Techniker_Person" >
-          <ConnectorPoint PointX="1.5" PointY="4.6821907552083353" />
-          <ConnectorPoint PointX="1.5" PointY="6.5478417968750016" />
-          <ConnectorPoint PointX="3" PointY="6.5478417968750016" />
+          <ConnectorPoint PointX="1.5" PointY="4.6821907552083388" />
+          <ConnectorPoint PointX="1.5" PointY="6.547841796874998" />
+          <ConnectorPoint PointX="3" PointY="6.547841796874998" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

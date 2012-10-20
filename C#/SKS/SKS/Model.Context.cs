@@ -30,6 +30,6 @@ namespace SKS.Scada.DAL
         public DbSet<MeasurementTyp> MeasurementTyps { get; set; }
         public DbSet<Person> People { get; set; }
         public DbSet<Site> Sites { get; set; }
-        public DbSet<Technican> Technicans { get; set; }
+        public DbSet<Technician> Technicians { get; set; }
     }
 }

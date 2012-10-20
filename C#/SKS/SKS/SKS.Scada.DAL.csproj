@@ -67,6 +67,9 @@
     <Compile Include="Customer.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBRepository.cs" />
+    <Compile Include="Factory.cs" />
+    <Compile Include="IRepository.cs" />
     <Compile Include="Measurement.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -94,7 +97,7 @@
     <Compile Include="Site.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Technican.cs">
+    <Compile Include="Technician.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
   </ItemGroup>
