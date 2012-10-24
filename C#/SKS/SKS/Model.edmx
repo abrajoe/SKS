@@ -181,8 +181,8 @@
             <End Role="Site" EntitySet="Sites" />
           </AssociationSet>
           <AssociationSet Name="FK_Kunde_Person" Association="SKSModel.FK_Kunde_Person">
-            <End Role="Person" EntitySet="People" />
-            <End Role="Customer" EntitySet="Customers" />
+            <End EntitySet="People" Role="Person" />
+            <End EntitySet="Customers" Role="Customer" />
           </AssociationSet>
           <AssociationSet Name="FK_Kunde_Techniker" Association="SKSModel.FK_Kunde_Techniker">
             <End Role="Technician" EntitySet="Technicians" />
@@ -197,8 +197,8 @@
             <End Role="Measurement" EntitySet="Measurements" />
           </AssociationSet>
           <AssociationSet Name="FK_Techniker_Person" Association="SKSModel.FK_Techniker_Person">
-            <End Role="Person" EntitySet="People" />
-            <End Role="Technician" EntitySet="Technicians" />
+            <End EntitySet="People" Role="Person" />
+            <End EntitySet="Technicians" Role="Technician" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Customer">
@@ -268,8 +268,8 @@
           <End Type="SKSModel.Site" Role="Site" Multiplicity="*" />
         </Association>
         <Association Name="FK_Kunde_Person">
-          <End Type="SKSModel.Person" Role="Person" Multiplicity="1" />
-          <End Type="SKSModel.Customer" Role="Customer" Multiplicity="*" />
+          <End Type="SKSModel.Person" Multiplicity="1" Role="Person" />
+          <End Type="SKSModel.Customer" Multiplicity="*" Role="Customer" />
         </Association>
         <Association Name="FK_Kunde_Techniker">
           <End Type="SKSModel.Technician" Role="Technician" Multiplicity="1" />
@@ -284,8 +284,8 @@
           <End Type="SKSModel.Measurement" Role="Measurement" Multiplicity="*" />
         </Association>
         <Association Name="FK_Techniker_Person">
-          <End Type="SKSModel.Person" Role="Person" Multiplicity="1" />
-          <End Type="SKSModel.Technician" Role="Technician" Multiplicity="*" />
+          <End Type="SKSModel.Person" Multiplicity="1" Role="Person" />
+          <End Type="SKSModel.Technician" Multiplicity="*" Role="Technician" />
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -429,7 +429,7 @@
           <ConnectorPoint PointX="6.75" PointY="4.7689925130208337" />
           <ConnectorPoint PointX="7.5" PointY="4.7689925130208337" />
         </AssociationConnector>
-        <AssociationConnector Association="SKSModel.FK_Kunde_Person" >
+        <AssociationConnector Association="SKSModel.FK_Kunde_Person">
           <ConnectorPoint PointX="2.25" PointY="4.2785953776041694" />
           <ConnectorPoint PointX="5.25" PointY="4.2785953776041694" />
         </AssociationConnector>
@@ -447,7 +447,7 @@
           <ConnectorPoint PointX="10.5" PointY="1.7401432291666694" />
           <ConnectorPoint PointX="10.5" PointY="3.75" />
         </AssociationConnector>
-        <AssociationConnector Association="SKSModel.FK_Techniker_Person" >
+        <AssociationConnector Association="SKSModel.FK_Techniker_Person">
           <ConnectorPoint PointX="1.5" PointY="4.6821907552083388" />
           <ConnectorPoint PointX="1.5" PointY="6.547841796874998" />
           <ConnectorPoint PointX="3" PointY="6.547841796874998" />
