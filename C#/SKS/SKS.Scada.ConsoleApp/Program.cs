@@ -10,7 +10,7 @@ namespace SKS.Scada.ConsoleApp
     {
         static void Main(string[] args)
         {
-            IRepository<Person> repo = Factory<Person>.Get();
+            IRepository<Person> repo = Factory<Person>.GetRepo();
             //Person p = new Person()
             //{
             //    Email = "max.mutz@gmail.com",

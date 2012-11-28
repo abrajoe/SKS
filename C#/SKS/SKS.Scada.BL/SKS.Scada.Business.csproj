@@ -79,6 +79,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomerService.cs" />
+    <Compile Include="Interfaces\ICustomerService.cs" />
+    <Compile Include="Interfaces\IMeasurementService.cs" />
+    <Compile Include="Interfaces\ISiteService.cs" />
+    <Compile Include="Interfaces\IStatisticsService.cs" />
+    <Compile Include="MeasurementService.cs" />
     <Compile Include="SiteService.cs" />
     <Compile Include="StatisticsService.cs" />
     <Compile Include="TestFriends.cs" />

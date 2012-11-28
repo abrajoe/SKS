@@ -10,7 +10,7 @@ using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 
 namespace SKS.Scada.BL
 {
-    class CustomerService
+    class CustomerService : SKS.Scada.BL.ICustomerService
     {
         ILog logger_ = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public List<Customer> GetCustomers(Technician technician)

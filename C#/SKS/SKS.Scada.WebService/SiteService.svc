@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="SKS.Scada.WebService.EventService" CodeBehind="SiteService.svc.cs" %>

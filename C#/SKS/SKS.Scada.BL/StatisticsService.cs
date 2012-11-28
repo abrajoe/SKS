@@ -9,7 +9,7 @@ using log4net;
 
 namespace SKS.Scada.BL
 {
-    class StatisticsService
+    class StatisticsService : IStatisticsService
     {
         ILog logger_ = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         ValidatorFactory valFactory;
