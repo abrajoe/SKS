@@ -16,9 +16,10 @@ namespace SKS.Scada.DAL
 
         #region IRepository<T> Members
 
-        public void Add(T EntityObject)
+        public T Add(T EntityObject)
         {
             list_.Add(EntityObject);
+            return EntityObject;
         }
 
         public void CommitChanges()

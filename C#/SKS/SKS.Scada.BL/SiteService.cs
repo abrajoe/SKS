@@ -16,6 +16,7 @@ namespace SKS.Scada.BL
         ValidatorFactory valFactory;
         IRepository<Site> reposite_;
         IRepository<Measurement> repomeasurement_;
+
         public SiteService(IRepository<Site> reposite, IRepository<Measurement> repomeasurement)
         {
             valFactory = EnterpriseLibraryContainer.Current.GetInstance<ValidatorFactory>();
@@ -65,8 +66,10 @@ namespace SKS.Scada.BL
         }
 
         public void AddMeasurement(int SiteID, Measurement measurement)
-        { 
-
+        {
+            Site site = reposite_.GetObjectByID(SiteID);
+            site.Measurements.Add(measurement);
+            reposite_.CommitChanges();
         }
         #endregion
     }

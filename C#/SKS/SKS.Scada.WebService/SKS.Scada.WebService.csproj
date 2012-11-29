@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation">
       <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
@@ -60,6 +63,9 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityConfiguration">
+      <HintPath>..\packages\UnityConfiguration.1.4.1\lib\net35\UnityConfiguration.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="SiteService.svc" />
@@ -82,6 +88,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SKS.Scada.BL\SKS.Scada.BL.csproj">
+      <Project>{05FF171D-B3CA-4568-AD05-C5145B842901}</Project>
+      <Name>SKS.Scada.BL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SKS\SKS.Scada.DAL.csproj">
       <Project>{C182FD3E-DA5A-4157-84C1-7C6979D068D5}</Project>
       <Name>SKS.Scada.DAL</Name>

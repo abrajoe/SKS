@@ -13,6 +13,11 @@ namespace SKS.Scada.BL
     class CustomerService : SKS.Scada.BL.ICustomerService
     {
         ILog logger_ = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private IRepository<Customer> repocustomer_;
+        public CustomerService(IRepository<Customer> repocustomer)
+        {
+            this.repocustomer_ = repocustomer;
+        }
         public List<Customer> GetCustomers(Technician technician)
         {
             ValidatorFactory valFactory
@@ -27,5 +32,7 @@ namespace SKS.Scada.BL
             logger_.Info("Returned Customer from technician");
             return technician.Customers.ToList();
         }
+
+        
     }
 }

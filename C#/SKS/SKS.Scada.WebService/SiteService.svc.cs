@@ -6,19 +6,26 @@ using System.ServiceModel;
 using System.Text;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
+using SKS.Scada.DAL;
+using SKS.Scada.BL;
+
 namespace SKS.Scada.WebService
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "EventService" in code, svc and config file together.
-    public class EventService : ISiteService
+    public class SiteService : ISiteService
     {
-
+        
         #region ISiteService Members
 
-        public void UploadMeasurement(int SiteID, string Unit, int Value)
-        {   
+        public void UploadMeasurement(string siteid, string unit, double value)
+        {
+            
             IUnityContainer unitycontainer = new UnityContainer();
-            unitycontainer.LoadConfiguration("UnityConfig");
-            unitycontainer.Resolve<ISiteService>();
+            unitycontainer.LoadConfiguration("UnityContainer");
+            IRepository<Site> reposite = unitycontainer.Resolve<IRepository<Site>>();
+            SKS.Scada.BL.ISiteService siteserv = unitycontainer.Resolve<SKS.Scada.BL.ISiteService>();
+            SKS.Scada.BL.IMeasurementService measureserv = unitycontainer.Resolve<SKS.Scada.BL.IMeasurementService>();
+            siteserv.AddMeasurement(Convert.ToInt32(siteid), measureserv.CreateMeasurement(value, unit));
         }
 
         #endregion
