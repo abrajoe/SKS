@@ -11,7 +11,7 @@ namespace SKS.Scada.DAL
     public class DBRepository<T> : IRepository<T> where T:class
     {
         SKSEntities sksent_;
-        DbSet<T> dbset_;
+        protected DbSet<T> dbset_;
         public DBRepository()
         {
             sksent_ = new SKSEntities();
@@ -19,10 +19,9 @@ namespace SKS.Scada.DAL
         }
         #region IRepository<T> Members
 
-        public void Add(T EntityObject)
+        public T Add(T EntityObject)
         {
-
-            dbset_.Add(EntityObject);
+            return dbset_.Add(EntityObject);
         }
 
         public void CommitChanges()
@@ -44,6 +43,10 @@ namespace SKS.Scada.DAL
         {
             dbset_.Attach(EntityObject);
             sksent_.Entry<T>(EntityObject).State = EntityState.Modified;
+        }
+        public List<T> GetAll()
+        {
+            return dbset_.ToList();
         }
 
         #endregion

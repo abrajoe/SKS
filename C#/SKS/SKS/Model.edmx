@@ -421,7 +421,7 @@
       <Diagram Name="Model">
         <EntityTypeShape EntityType="SKSModel.Customer" Width="1.5" PointX="5.25" PointY="3.875" Height="1.7879850260416674" />
         <EntityTypeShape EntityType="SKSModel.Measurement" Width="1.5" PointX="9.75" PointY="3.75" Height="1.9802864583333388" />
-        <EntityTypeShape EntityType="SKSModel.MeasurementTyp" Width="1.5" PointX="7.5" PointY="0.75" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="SKSModel.MeasurementTyp" Width="2" PointX="7.5" PointY="0.75" Height="1.9802864583333388" />
         <EntityTypeShape EntityType="SKSModel.Person" Width="1.5" PointX="0.75" PointY="2.125" Height="2.5571907552083384" />
         <EntityTypeShape EntityType="SKSModel.Site" Width="1.5" PointX="7.5" PointY="3.5" Height="2.3648893229166674" />
         <EntityTypeShape EntityType="SKSModel.Technician" Width="1.5" PointX="3" PointY="5.75" Height="1.595683593749996" />
@@ -443,7 +443,7 @@
           <ConnectorPoint PointX="9.75" PointY="4.7401432291666694" />
         </AssociationConnector>
         <AssociationConnector Association="SKSModel.FK_Messwert_MesswertTyp" >
-          <ConnectorPoint PointX="9" PointY="1.7401432291666694" />
+          <ConnectorPoint PointX="9.5" PointY="1.7401432291666694" />
           <ConnectorPoint PointX="10.5" PointY="1.7401432291666694" />
           <ConnectorPoint PointX="10.5" PointY="3.75" />
         </AssociationConnector>
