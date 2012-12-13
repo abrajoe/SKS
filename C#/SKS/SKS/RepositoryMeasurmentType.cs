@@ -13,7 +13,13 @@ namespace SKS.Scada.DAL
                 from x in dbset_
                 where x.Unit == Unit
                 select x;
-            return measurementtyp.First();
+            return measurementtyp.SingleOrDefault();
+
+            //if (measurementtyp.Count() < 1)
+            //    throw new EntityNotFoundException();
+            //else 
+            //    return measurementtyp.First();
+            
         }
     }
 }
