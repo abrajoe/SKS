@@ -22,6 +22,19 @@ namespace SKS.Scada.BL
             valFactory = EnterpriseLibraryContainer.Current.GetInstance<ValidatorFactory>();
             this.reposite_ = reposite;
         }
+
+        public Site AddSite(Customer custom, string description, double longitude, double latitude) 
+        {
+            Site site = new Site();
+            site.Customer = custom;
+            site.Description = description;
+            site.Longitude = longitude;
+            site.Latitude = latitude;
+            site = reposite_.Add(site);
+            reposite_.CommitChanges();
+            return site;
+        }
+        
         public Measurement GetLatestSiteState(Site site)
         {
             Validator<Site> validator = valFactory.CreateValidator<Site>();

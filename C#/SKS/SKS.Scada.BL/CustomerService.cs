@@ -18,6 +18,23 @@ namespace SKS.Scada.BL
         {
             this.repocustomer_ = repocustomer;
         }
+
+        public Customer AddCustomer(string firstname, string email, string lastname, string password, string username, Technician technician)
+        {
+            Customer customer = new Customer();
+            customer.Person = new Person()
+            {
+                Firstname = firstname,
+                Email = email,
+                Lastname = lastname,
+                Password = password,
+                Username = username
+            };
+            customer.Technician = technician;
+            customer = repocustomer_.Add(customer);
+            repocustomer_.CommitChanges();
+            return customer;
+        }
         public List<Customer> GetCustomers(Technician technician)
         {
             ValidatorFactory valFactory

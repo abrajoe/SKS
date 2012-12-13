@@ -6,6 +6,7 @@ namespace SKS.Scada.BL
     public interface ISiteService
     {
         Measurement GetLatestSiteState(SKS.Scada.DAL.Site site);
+        Site AddSite(Customer custom, string description, double longitude, double latitude);
         List<SKS.Scada.DAL.Site> GetSites(SKS.Scada.DAL.Customer customer);
         Site GetSite(int SiteID);
         void AddMeasurement(Site site, Measurement measurement);
