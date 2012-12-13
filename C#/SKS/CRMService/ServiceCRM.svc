@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="CRMService.ServiceCRM" CodeBehind="ServiceCRM.svc.cs" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="SKS.Scada.CRMService.ServiceCRM" CodeBehind="ServiceCRM.svc.cs" %>

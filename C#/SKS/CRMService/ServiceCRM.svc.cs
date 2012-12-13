@@ -9,16 +9,11 @@ using SKS.Scada.DAL;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 
-namespace CRMService
+namespace SKS.Scada.CRMService
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
     public class ServiceCRM : IServiceCRM
     {
-        public string GetData(int value)
-        {
-            return string.Format("You entered: {0}", value);
-        }
-
         public void AddSite(Customer custom, string description, double longitude, double latitude)
         {
 
@@ -38,7 +33,6 @@ namespace CRMService
             SKS.Scada.BL.ICustomerService custserv = unitycontainer.Resolve<SKS.Scada.BL.ICustomerService>();
             return custserv.AddCustomer(firstname, email, lastname,
              password, username, technician);
-
             
         }
 
