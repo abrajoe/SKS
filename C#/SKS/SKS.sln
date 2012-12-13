@@ -20,6 +20,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockRepoTest", "MockRepoTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKS.Scada.WebService", "SKS.Scada.WebService\SKS.Scada.WebService.csproj", "{2E212C75-21FF-402E-A6F4-3C7065FABF08}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKS.Scada.CRMService", "CRMService\SKS.Scada.CRMService.csproj", "{601D3650-3A98-4B6E-B7CB-443E3112DEFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleCRM", "ConsoleCRM\ConsoleCRM.csproj", "{D619E956-9AF3-4DF0-8F9D-4A4804C50C6B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{601D3650-3A98-4B6E-B7CB-443E3112DEFD} = {601D3650-3A98-4B6E-B7CB-443E3112DEFD}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = SKS.vsmdi
@@ -93,6 +100,26 @@ Global
 		{2E212C75-21FF-402E-A6F4-3C7065FABF08}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{2E212C75-21FF-402E-A6F4-3C7065FABF08}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{2E212C75-21FF-402E-A6F4-3C7065FABF08}.Release|x86.ActiveCfg = Release|Any CPU
+		{601D3650-3A98-4B6E-B7CB-443E3112DEFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{601D3650-3A98-4B6E-B7CB-443E3112DEFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{601D3650-3A98-4B6E-B7CB-443E3112DEFD}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{601D3650-3A98-4B6E-B7CB-443E3112DEFD}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{601D3650-3A98-4B6E-B7CB-443E3112DEFD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{601D3650-3A98-4B6E-B7CB-443E3112DEFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{601D3650-3A98-4B6E-B7CB-443E3112DEFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{601D3650-3A98-4B6E-B7CB-443E3112DEFD}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{601D3650-3A98-4B6E-B7CB-443E3112DEFD}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{601D3650-3A98-4B6E-B7CB-443E3112DEFD}.Release|x86.ActiveCfg = Release|Any CPU
+		{D619E956-9AF3-4DF0-8F9D-4A4804C50C6B}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{D619E956-9AF3-4DF0-8F9D-4A4804C50C6B}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{D619E956-9AF3-4DF0-8F9D-4A4804C50C6B}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{D619E956-9AF3-4DF0-8F9D-4A4804C50C6B}.Debug|x86.ActiveCfg = Debug|x86
+		{D619E956-9AF3-4DF0-8F9D-4A4804C50C6B}.Debug|x86.Build.0 = Debug|x86
+		{D619E956-9AF3-4DF0-8F9D-4A4804C50C6B}.Release|Any CPU.ActiveCfg = Release|x86
+		{D619E956-9AF3-4DF0-8F9D-4A4804C50C6B}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{D619E956-9AF3-4DF0-8F9D-4A4804C50C6B}.Release|Mixed Platforms.Build.0 = Release|x86
+		{D619E956-9AF3-4DF0-8F9D-4A4804C50C6B}.Release|x86.ActiveCfg = Release|x86
+		{D619E956-9AF3-4DF0-8F9D-4A4804C50C6B}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

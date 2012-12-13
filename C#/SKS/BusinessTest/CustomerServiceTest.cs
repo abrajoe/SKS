@@ -99,7 +99,7 @@ namespace BusinessTest
                 };
             technician.Customers.Add(cus);
 
-            CustomerService target = new CustomerService();
+            CustomerService target = new CustomerService(new RepositoryMock<Customer>());
 
             List<Customer> expected = new List<Customer>(technician.Customers) ; 
             List<Customer> actual;
@@ -113,7 +113,7 @@ namespace BusinessTest
         public void GetCustomersTestValidationException()
         {
             Technician technician = null;
-            CustomerService service = new CustomerService();
+            CustomerService service = new CustomerService(new RepositoryMock<Customer>());
             service.GetCustomers(technician);
         }
 

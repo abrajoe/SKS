@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SKS.Scada.DAL" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SKS.Scada.DAL" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Customer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CustomerID" type="xs:long" />
+      <xs:element minOccurs="0" name="Person" nillable="true" type="tns:Person" />
+      <xs:element minOccurs="0" name="Sites" nillable="true" type="tns:ArrayOfSite" />
+      <xs:element minOccurs="0" name="Technician" nillable="true" type="tns:Technician" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Customer" nillable="true" type="tns:Customer" />
+  <xs:complexType name="Person">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Customers" nillable="true" type="tns:ArrayOfCustomer" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Firstname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Lastname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PersonID" type="xs:long" />
+      <xs:element minOccurs="0" name="Technicians" nillable="true" type="tns:ArrayOfTechnician" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Person" nillable="true" type="tns:Person" />
+  <xs:complexType name="ArrayOfCustomer">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Customer" nillable="true" type="tns:Customer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCustomer" nillable="true" type="tns:ArrayOfCustomer" />
+  <xs:complexType name="ArrayOfTechnician">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Technician" nillable="true" type="tns:Technician" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTechnician" nillable="true" type="tns:ArrayOfTechnician" />
+  <xs:complexType name="Technician">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Customers" nillable="true" type="tns:ArrayOfCustomer" />
+      <xs:element minOccurs="0" name="Person" nillable="true" type="tns:Person" />
+      <xs:element minOccurs="0" name="TechnicianID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Technician" nillable="true" type="tns:Technician" />
+  <xs:complexType name="ArrayOfSite">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Site" nillable="true" type="tns:Site" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSite" nillable="true" type="tns:ArrayOfSite" />
+  <xs:complexType name="Site">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:Customer" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Latitude" type="xs:double" />
+      <xs:element minOccurs="0" name="Longitude" type="xs:double" />
+      <xs:element minOccurs="0" name="Measurements" nillable="true" type="tns:ArrayOfMeasurement" />
+      <xs:element minOccurs="0" name="Serialnumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SiteID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Site" nillable="true" type="tns:Site" />
+  <xs:complexType name="ArrayOfMeasurement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Measurement" nillable="true" type="tns:Measurement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMeasurement" nillable="true" type="tns:ArrayOfMeasurement" />
+  <xs:complexType name="Measurement">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MeasurementID" type="xs:long" />
+      <xs:element minOccurs="0" name="MeasurementTyp" nillable="true" type="tns:MeasurementTyp" />
+      <xs:element minOccurs="0" name="Site" nillable="true" type="tns:Site" />
+      <xs:element minOccurs="0" name="Time" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Value" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Measurement" nillable="true" type="tns:Measurement" />
+  <xs:complexType name="MeasurementTyp">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Maximum" type="xs:long" />
+      <xs:element minOccurs="0" name="MeasurementTypID" type="xs:int" />
+      <xs:element minOccurs="0" name="Measurements" nillable="true" type="tns:ArrayOfMeasurement" />
+      <xs:element minOccurs="0" name="Minimum" type="xs:long" />
+      <xs:element minOccurs="0" name="Unit" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MeasurementTyp" nillable="true" type="tns:MeasurementTyp" />
+</xs:schema>

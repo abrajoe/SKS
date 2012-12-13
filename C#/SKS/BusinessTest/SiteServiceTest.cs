@@ -72,7 +72,7 @@ namespace BusinessTest
         [TestMethod()]
         public void GetLatestSiteStateTest()
         {
-            SiteService target = new SiteService();
+            SiteService target = new SiteService(new RepositoryMock<Site>(), new RepositoryMock<Measurement>());
             Site site = new Site()
             {
                 Description = "Description",
@@ -121,7 +121,7 @@ namespace BusinessTest
         [TestMethod()]
         public void GetSitesTest()
         {
-            SiteService target = new SiteService();
+            SiteService target = new SiteService(new RepositoryMock<Site>(), new RepositoryMock<Measurement>());
             Customer customer = new Customer()
             {
                 Person = new Person()
@@ -163,7 +163,7 @@ namespace BusinessTest
         [ExpectedException(typeof(ValidationException))]
         public void GetLatestSiteExceptionStateTest()
         {
-            SiteService siteservice = new SiteService();
+            SiteService siteservice = new SiteService(new RepositoryMock<Site>(), new RepositoryMock<Measurement>());
             siteservice.GetLatestSiteState(null);
         }
 
@@ -171,7 +171,7 @@ namespace BusinessTest
         [ExpectedException(typeof(ValidationException))]
         public void GetSitesExceptionStateTest()
         {
-            SiteService siteservice = new SiteService();
+            SiteService siteservice = new SiteService(new RepositoryMock<Site>(), new RepositoryMock<Measurement>());
             siteservice.GetSites(null);
         }
     }

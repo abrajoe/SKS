@@ -6,7 +6,6 @@ using System.ServiceModel;
 using System.Text;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
-using SKS.Scada.DAL;
 using SKS.Scada.BL;
 
 namespace SKS.Scada.WebService
@@ -22,7 +21,6 @@ namespace SKS.Scada.WebService
             
             IUnityContainer unitycontainer = new UnityContainer();
             unitycontainer.LoadConfiguration("UnityContainer");
-            IRepository<Site> reposite = unitycontainer.Resolve<IRepository<Site>>();
             SKS.Scada.BL.ISiteService siteserv = unitycontainer.Resolve<SKS.Scada.BL.ISiteService>();
             SKS.Scada.BL.IMeasurementService measureserv = unitycontainer.Resolve<SKS.Scada.BL.IMeasurementService>();
             siteserv.AddMeasurement(Convert.ToInt32(siteid), measureserv.CreateMeasurement(value, unit));
